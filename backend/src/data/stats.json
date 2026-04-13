@@ -1,5 +1,12 @@
 {
-  "totalSessions": 0,
-  "sessions": [],
-  "topics": {}
+  "totalSessions": 4,
+  "topics": {
+    "Unknown": 7
+  },
+  "_sessions": [
+    "45e32547-bffd-44d1-ab66-701721be7df3",
+    "c8021a1f-b7bc-4485-b5ca-9f74227a20b1",
+    "4a3c749b-459b-4731-aa63-a6762000bb36",
+    "53fceca7-3cfa-4a3f-b63c-0e5579c60bcd"
+  ]
 }

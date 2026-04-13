@@ -19,13 +19,11 @@ async function chat(req, res) {
   // We pass an empty string to keep the existing webhook contract.
   const result = await callChatWebhook(message, EMPTY_PDF_TEXT)
 
-  const { answer, topic, canAnswer } = result || {}
-
   // Track session/topic regardless of canAnswer.
   incrementSession(sessionId)
-  if (topic) incrementTopic(topic)
+  if (result?.topic) incrementTopic(result.topic)
 
-  return res.status(200).json({ answer, topic, canAnswer })
+  return res.status(200).json(result)
 }
 
 module.exports = { chat }
