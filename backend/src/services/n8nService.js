@@ -1,6 +1,25 @@
 const axios = require('axios')
 require('dotenv').config()
 
+async function callUploadFileWebhook(fileBuffer, filename, mimetype) {
+  try {
+    const url = process.env.N8N_UPLOAD_FILE
+
+    const formData = new FormData()
+    formData.append('pdf', new Blob([fileBuffer], { type: mimetype || 'application/pdf' }), filename)
+
+    const res = await axios.post(url, formData, {
+      headers: {
+        ...(formData.getHeaders ? formData.getHeaders() : {}),
+      },
+    })
+
+    return res.data
+  } catch (err) {
+    return { error: err?.message || 'Upload to n8n failed' }
+  }
+}
+
 async function callChatWebhook(message, pdfText) {
   try {
     const url = process.env.N8N_CHAT_WEBHOOK_URL
@@ -43,4 +62,5 @@ async function callContactWebhook(
 module.exports = {
   callChatWebhook,
   callContactWebhook,
+  callUploadFileWebhook,
 }

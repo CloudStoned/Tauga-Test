@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import PdfUploader from '../components/admin/PdfUploader.jsx'
 import StatsCard from '../components/admin/StatsCard.jsx'
 import TopicChart from '../components/admin/TopicChart.jsx'
+import { uploadPdf } from '../services/api.js'
 
 function Loader() {
   return (
@@ -169,7 +170,15 @@ export default function AdminDashboard() {
             }}
           >
             <div>
-              <PdfUploader activeFilename={activeFilename} />
+              <PdfUploader
+                activeFilename={activeFilename}
+                onUpload={async (file) => {
+                  const res = await uploadPdf(file)
+                  return typeof res?.message === 'string'
+                    ? res.message
+                    : 'PDF uploaded successfully.'
+                }}
+              />
             </div>
 
             <div>

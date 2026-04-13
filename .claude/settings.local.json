@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "Bash(npm init:*)"
+      "Bash(npm init:*)",
+      "Bash(node:*)",
+      "Bash(del /Q \"backend\\\\src\\\\services\\\\pdfService.js\")"
     ]
   }
 }
