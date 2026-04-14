@@ -1,17 +1,19 @@
 const axios = require('axios')
+const FormData = require('form-data')
 require('dotenv').config()
 
 async function callUploadFileWebhook(fileBuffer, filename, mimetype) {
   try {
     const url = process.env.N8N_UPLOAD_FILE
-
     const formData = new FormData()
-    formData.append('pdf', new Blob([fileBuffer], { type: mimetype || 'application/pdf' }), filename)
+
+    formData.append('pdf', fileBuffer, {
+      filename: filename,
+      contentType: mimetype || 'application/pdf',
+    })
 
     const res = await axios.post(url, formData, {
-      headers: {
-        ...(formData.getHeaders ? formData.getHeaders() : {}),
-      },
+      headers: formData.getHeaders(),
     })
 
     return res.data

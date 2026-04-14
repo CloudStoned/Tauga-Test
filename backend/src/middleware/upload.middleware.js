@@ -1,16 +1,6 @@
-const path = require('path')
 const multer = require('multer')
 
-const dataDir = path.join(__dirname, '..', 'data')
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, dataDir)
-  },
-  filename: (req, file, cb) => {
-    cb(null, 'hotel.pdf')
-  },
-})
+const storage = multer.memoryStorage()
 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype !== 'application/pdf') {
