@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { PdfUploader } from "@/components/admin/PdfUploader";
 import { StatsCard } from "@/components/admin/StatsCard";
@@ -7,17 +7,7 @@ import { TopicChart } from "@/components/admin/TopicChart";
 import { AdminLoader } from "@/components/admin/AdminLoader";
 import { getStats, uploadPdf } from "@/services/api";
 
-export const Route = createFileRoute("/admin")({
-  component: AdminDashboard,
-  head: () => ({
-    meta: [
-      { title: "Admin Dashboard — Cincinnati Hotel" },
-      { name: "description", content: "Manage your hotel AI assistant, upload PDFs, and view analytics." },
-    ],
-  }),
-});
-
-function AdminDashboard() {
+export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [totalSessions, setTotalSessions] = useState(0);
   const [topics, setTopics] = useState<Record<string, number>>({});
@@ -29,7 +19,7 @@ function AdminDashboard() {
       const data = await getStats() as any;
       setTotalSessions(data?.totalSessions ?? 0);
       setTopics(data?.topics ?? {});
-      setActiveFilename(data?.activeFilename ?? ""); 
+      setActiveFilename(data?.activeFilename ?? "");
     } catch {
       // silently fail — stats will show 0
     } finally {
@@ -43,7 +33,6 @@ function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
         <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
           <div>
@@ -63,7 +52,6 @@ function AdminDashboard() {
         </div>
       </header>
 
-      {/* Content */}
       <main className="mx-auto max-w-6xl px-6 py-8">
         {loading ? (
           <AdminLoader />
@@ -74,7 +62,6 @@ function AdminDashboard() {
             transition={{ duration: 0.3 }}
             className="space-y-8"
           >
-            {/* Stats row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <StatsCard
                 label="Total Sessions"
@@ -122,7 +109,6 @@ function AdminDashboard() {
               <TopicChart topics={topics} />
             </div>
 
-            {/* Refresh */}
             <div className="flex justify-end">
               <button
                 onClick={() => fetchStats()}

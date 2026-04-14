@@ -1,5 +1,5 @@
-import { createFileRoute,useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ChatBubble } from "@/components/chat/ChatBubble";
 import { ChatInput } from "@/components/chat/ChatInput";
 import { ContactForm } from "@/components/chat/ContactForm";
@@ -9,16 +9,6 @@ interface Message {
   sender: "user" | "bot";
   text: string;
 }
-
-export const Route = createFileRoute("/chat")({
-  component: UserChat,
-  head: () => ({
-    meta: [
-      { title: "Chat — Cincinnati Hotel" },
-      { name: "description", content: "Ask our AI concierge about rooms, pricing, facilities and more." },
-    ],
-  }),
-});
 
 function TypingIndicator() {
   return (
@@ -35,7 +25,7 @@ function TypingIndicator() {
   );
 }
 
-function UserChat() {
+export default function ChatPage() {
   const navigate = useNavigate();
 
   const [sessionId] = useState(() => {
@@ -106,12 +96,11 @@ function UserChat() {
 
   return (
     <div className="flex flex-col h-screen bg-background">
-      {/* Header */}
       <header className="shrink-0 bg-background/80 backdrop-blur-xl border-b border-border z-10">
         <div className="mx-auto max-w-3xl flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
             <button
-              onClick={() => navigate({ to: "/" })}
+              onClick={() => navigate("/")}
               className="w-9 h-9 rounded-xl flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               aria-label="Back"
             >
@@ -134,7 +123,6 @@ function UserChat() {
         </div>
       </header>
 
-      {/* Messages */}
       <div className="flex-1 overflow-y-auto" ref={listRef}>
         <div className="mx-auto max-w-3xl px-4 py-6">
           {messages.map((m, idx) => (
@@ -153,7 +141,6 @@ function UserChat() {
         </div>
       </div>
 
-      {/* Input */}
       <div className="shrink-0 border-t border-border bg-background/80 backdrop-blur-xl">
         <div className="mx-auto max-w-3xl px-4 py-3">
           <ChatInput onSend={handleSend} disabled={waiting} />
