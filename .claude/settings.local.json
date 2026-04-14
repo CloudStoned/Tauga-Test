@@ -5,7 +5,8 @@
       "Bash(npm init:*)",
       "Bash(node:*)",
       "Bash(del /Q \"backend\\\\src\\\\services\\\\pdfService.js\")",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(echo LINT_EXIT:$?)"
     ]
   }
 }
