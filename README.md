@@ -104,3 +104,4 @@ npm start
 | Show unanswered queries in UI | Expose the `unansweredQueries` array in the admin dashboard for review. |
 | Tighten contracts | Define and validate a shared schema between frontend, backend, and n8n. |
 | PDF versioning | Add DB-backed tracking of uploaded PDFs with timestamps and overwrite history. |
+| **Chat history for users** | Allow users to browse and resume their past conversations. On the frontend, persist each session's messages to `localStorage` (or a backend store if auth is enabled), indexed by `sessionId` and timestamp. Render a history sidebar or dropdown that lists previous sessions by date/title. When a user selects a past session, reload its `messages` array into the chat window and include it in the next `POST /api/chat` payload so the AI has full context. Optionally, let users delete or rename sessions, and cap stored history to a configurable limit (e.g. last 30 sessions) to avoid unbounded storage growth. |
