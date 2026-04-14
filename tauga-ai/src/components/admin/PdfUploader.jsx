@@ -49,7 +49,7 @@ export default function PdfUploader({ activeFilename, onUpload }) {
         border: '1px solid var(--border)',
       }}
     >
-      <div style={{ color: 'var(--text)', fontWeight: 900, marginBottom: 6 }}>
+      <div style={{ color: 'var(--text)', fontWeight: 600, marginBottom: 6 }}>
         Hotel Information PDF
       </div>
       <div style={{ color: 'var(--muted)', marginBottom: 18 }}>

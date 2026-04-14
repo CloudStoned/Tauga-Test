@@ -110,7 +110,7 @@ export default function AdminDashboard() {
           alignItems: 'center',
           justifyContent: 'space-between',
           color: 'var(--text)',
-          fontWeight: 900,
+          fontWeight: 600,
         }}
       >
         <div>Cincinnati Hotel — Admin Dashboard</div>
@@ -126,7 +126,7 @@ export default function AdminDashboard() {
             gap: 10,
             color: 'var(--text)',
             cursor: 'pointer',
-            fontWeight: 700,
+            fontWeight: 600,
             padding: '8px 10px',
             borderRadius: 10,
           }}
@@ -199,7 +199,7 @@ export default function AdminDashboard() {
                     padding: '10px 14px',
                     borderRadius: 12,
                     cursor: 'pointer',
-                    fontWeight: 800,
+                    fontWeight: 600,
                   }}
                 >
                   Refresh Stats

@@ -19,7 +19,7 @@ export default function TopicChart({ topics }) {
         border: '1px solid var(--border)',
       }}
     >
-      <div style={{ color: 'var(--text)', fontWeight: 800, marginBottom: 12 }}>
+      <div style={{ color: 'var(--text)', fontWeight: 600, marginBottom: 12 }}>
         Questions by Topic
       </div>
 
