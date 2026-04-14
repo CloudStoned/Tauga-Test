@@ -162,17 +162,17 @@ export default function AdminDashboard() {
           <Loader />
         ) : (
           <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '40% 60%',
-              gap: 24,
-              alignItems: 'start',
-            }}
-          >
-            <div>
-              <PdfUploader
-                activeFilename={activeFilename}
-                onUpload={async (file) => {
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.3fr)',
+            gap: 24,
+            alignItems: 'stretch',
+          }}
+        >
+          <div style={{ marginTop: 55}}>
+            <PdfUploader
+              activeFilename={activeFilename}
+              onUpload={async (file) => {
                   const res = await uploadPdf(file)
                   return typeof res?.message === 'string'
                     ? res.message
