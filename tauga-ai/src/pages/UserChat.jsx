@@ -7,13 +7,6 @@ import ContactForm from '../components/chat/ContactForm.jsx'
 import Navbar from '../components/shared/Navbar.jsx'
 import { sendMessage } from '../services/api.js'
 
-function ensureTextReply(data) {
-  if (typeof data?.reply === 'string' && data.reply.trim()) return data.reply
-  if (typeof data?.answer === 'string' && data.answer.trim()) return data.answer
-  if (typeof data?.output === 'string' && data.output.trim()) return data.output
-  return 'Thanks — I’m still looking into that. Could you share more details?'
-}
-
 async function sendMessageViaApi(sessionId, message) {
   const data = await sendMessage(sessionId, message)
   return data
@@ -29,26 +22,12 @@ async function sendMessageHandler({ sessionId, setWaiting, setShowContact, setMe
   try {
     const data = await sendMessageViaApi(sessionId, message)
 
-    if (data?.canAnswer === false) {
-      if (typeof data?.reply === 'string' && data.reply.trim()) {
-        setMessages((prev) => [...prev, { sender: 'bot', text: data.reply }])
-        return
-      }
-
-      if (typeof data?.output === 'string' && data.output.trim()) {
-        setMessages((prev) => [...prev, { sender: 'bot', text: data.output }])
-        setShowContact(false)
-        return
-      }
-
-      if (typeof data?.answer === 'string' && data.answer.trim()) {
-        setMessages((prev) => [...prev, { sender: 'bot', text: data.answer }])
-      }
+    if(data.output?.offer_contact_form) {
       setShowContact(true)
       return
     }
 
-    const botText = ensureTextReply(data)
+    const botText = data.output?.message
     setMessages((prev) => [...prev, { sender: 'bot', text: botText }])
   } catch {
     setMessages((prev) => [
