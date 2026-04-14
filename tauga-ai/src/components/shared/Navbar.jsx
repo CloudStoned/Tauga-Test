@@ -67,7 +67,7 @@ export default function Navbar({ mode, showBack }) {
               background: '#f7fafc',
               border: '1px solid #eee',
               color: '#004370',
-              fontWeight: 800,
+              fontWeight: 600,
               fontSize: 12,
             }}
           >
