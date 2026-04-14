@@ -48,8 +48,8 @@ export function PdfUploader({ onUpload }: PdfUploaderProps) {
         }}
         onClick={() => inputRef.current?.click()}
         className={`
-          relative cursor-pointer border-2 border-dashed rounded-xl p-8 text-center transition-all duration-200
-          ${dragging ? "border-hotel-gold bg-hotel-gold/5" : "border-border hover:border-muted-foreground/30 hover:bg-accent/50"}
+          relative cursor-pointer border-2 border-dashed rounded-xl p-8 text-center transition-all duration-200 
+          ${dragging ? "border-hotel-gold bg-hotel-gold/5" : "border-hotel-gold hover:border-hotel-gold hover:bg-accent/50"}
         `}
       >
         <input

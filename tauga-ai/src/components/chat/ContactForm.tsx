@@ -50,9 +50,10 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
         />
         <input
           type="tel"
-          placeholder="Phone (optional)"
+          placeholder="Phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
+          required
           maxLength={20}
           className={inputClass}
         />
@@ -68,7 +69,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
         <button
           type="submit"
           disabled={submitting || !name.trim() || !email.trim()}
-          className="w-full py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-xl transition-all duration-200 hover:bg-primary/90 disabled:opacity-50"
+          className="w-full py-2.5 bg-hotel-gold text-hotel-gold-foreground text-sm font-medium rounded-xl transition-all duration-200 hover:bg-hotel-gold/90 disabled:opacity-50"
         >
           {submitting ? "Sending…" : "Send Contact Info"}
         </button>

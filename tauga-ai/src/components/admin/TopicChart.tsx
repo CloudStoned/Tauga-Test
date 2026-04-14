@@ -17,7 +17,7 @@ export function TopicChart({ topics }: TopicChartProps) {
   if (sorted.length === 0) {
     return (
       <div className="bg-card border border-border rounded-2xl p-6">
-        <h3 className="font-display text-lg font-semibold text-card-foreground mb-4">Top Topics</h3>
+        <h3 className="font-display text-lg font-semibold text-card-foreground mb-4">Questions asked per topic/category</h3>
         <p className="text-sm text-muted-foreground">No topic data available yet.</p>
       </div>
     );
@@ -30,7 +30,7 @@ export function TopicChart({ topics }: TopicChartProps) {
       transition={{ duration: 0.5, ease: "easeOut" as const }}
       className="bg-card border border-border rounded-2xl p-6"
     >
-      <h3 className="font-display text-lg font-semibold text-card-foreground mb-6">Top Topics</h3>
+      <h3 className="font-display text-lg font-semibold text-card-foreground mb-6">Questions asked per topic/category</h3>
       <div className="space-y-4">
         {sorted.map(([topic, count], i) => (
           <div key={topic} className="space-y-1.5">

@@ -18,7 +18,7 @@ export function ChatBubble({ sender, text }: ChatBubbleProps) {
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"} mb-3`}>
       {!isUser && (
-        <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mr-2.5 mt-1 text-xs font-bold">
+        <div className="w-8 h-8 rounded-full bg-hotel-gold/10 text-hotel-gold flex items-center justify-center shrink-0 mr-2.5 mt-1 text-xs font-bold">
           CH
         </div>
       )}
@@ -26,7 +26,7 @@ export function ChatBubble({ sender, text }: ChatBubbleProps) {
         className={`
           max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed
           ${isUser
-            ? "bg-primary text-primary-foreground rounded-br-md"
+            ? "bg-hotel-gold text-hotel-gold-foreground rounded-br-md"
             : "bg-card border border-border text-card-foreground rounded-bl-md"
           }
         `}

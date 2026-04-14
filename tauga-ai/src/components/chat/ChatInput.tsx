@@ -32,7 +32,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
       <button
         type="submit"
         disabled={disabled || !value.trim()}
-        className="shrink-0 w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center transition-all duration-200 hover:bg-primary/90 disabled:opacity-40 disabled:cursor-not-allowed"
+        className="shrink-0 w-10 h-10 rounded-xl bg-hotel-gold text-hotel-gold-foreground flex items-center justify-center transition-all duration-200 hover:bg-hotel-gold/90 disabled:opacity-40 disabled:cursor-not-allowed"
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <line x1="22" y1="2" x2="11" y2="13" />
