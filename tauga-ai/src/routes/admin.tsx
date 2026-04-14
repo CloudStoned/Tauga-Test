@@ -29,7 +29,7 @@ function AdminDashboard() {
       const data = await getStats() as any;
       setTotalSessions(data?.totalSessions ?? 0);
       setTopics(data?.topics ?? {});
-      setActiveFilename(data?.activeFilename ?? "");
+      setActiveFilename(data?.activeFilename ?? ""); 
     } catch {
       // silently fail — stats will show 0
     } finally {

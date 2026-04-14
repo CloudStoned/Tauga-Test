@@ -1,6 +1,7 @@
 let stats = {
   totalSessions: 0,
   topics: {},
+  activeFilename: '',
   _sessions: [],
 }
 
@@ -8,6 +9,7 @@ function getStats() {
   return {
     totalSessions: stats.totalSessions ?? 0,
     topics: stats.topics ?? {},
+    activeFilename: stats.activeFilename ?? '',
   }
 }
 
@@ -35,8 +37,14 @@ function incrementTopic(topic) {
   stats.topics[safeTopic] = current + 1
 }
 
+function showActiveFileName(filename) {
+  stats.activeFilename = String(filename ?? '').trim()
+  return stats.activeFilename
+}
+
 module.exports = {
   getStats,
   incrementSession,
   incrementTopic,
+  showActiveFileName,
 }
