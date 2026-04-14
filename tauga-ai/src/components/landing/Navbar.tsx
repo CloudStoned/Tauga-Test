@@ -12,22 +12,6 @@ export function Navbar() {
           Cincinnati Hotel
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-2">
-          <Link
-            to="/admin"
-            className="px-4 py-2 text-sm font-medium text-muted-foreground rounded-lg transition-colors hover:text-foreground hover:bg-accent"
-          >
-            Admin
-          </Link>
-          <Link
-            to="/chat"
-            className="px-4 py-2 text-sm font-medium text-muted-foreground rounded-lg transition-colors hover:text-foreground hover:bg-accent"
-          >
-            Regular User
-          </Link>
-        </div>
-
         {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen((v) => !v)}
@@ -50,35 +34,6 @@ export function Navbar() {
           </svg>
         </button>
       </div>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl overflow-hidden"
-          >
-            <div className="px-6 py-4 flex flex-col gap-2">
-              <Link
-                to="/admin"
-                onClick={() => setMenuOpen(false)}
-                className="px-4 py-3 text-sm font-medium text-foreground rounded-lg hover:bg-accent transition-colors"
-              >
-                Admin
-              </Link>
-              <Link
-                to="/chat"
-                onClick={() => setMenuOpen(false)}
-                className="px-4 py-3 text-sm font-medium text-foreground rounded-lg hover:bg-accent transition-colors"
-              >
-                Regular User
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 }
