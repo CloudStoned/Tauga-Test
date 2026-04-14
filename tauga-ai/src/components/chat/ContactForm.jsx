@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 export default function ContactForm({ onSubmit }) {
+  // onSubmit should accept (name, phone, email, extra)
+  // but existing callers can ignore the extra arg.
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
@@ -9,7 +11,8 @@ export default function ContactForm({ onSubmit }) {
   function handleSubmit(e) {
     e.preventDefault()
     onSubmit(name, phone, email)
-    setSuccess(true)
+    setSuccess(true) // success UI will show immediately; notification is handled by backend via onSubmit
+
   }
 
   return (

@@ -147,7 +147,7 @@ export default function UserChat() {
     })
   }
 
-  async function handleContactSubmit(name, phone, email) {
+  async function handleContactSubmit(name, phone, email, extra = {}) {
     await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/contact`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -157,6 +157,7 @@ export default function UserChat() {
         email,
         conversation: messages,
         unansweredQuestion,
+        ...extra,
       }),
     })
 
@@ -261,7 +262,17 @@ export default function UserChat() {
               {waiting ? <Loader /> : null}
 
               {showContact ? (
-                <ContactForm onSubmit={handleContactSubmit} />
+                <ContactForm
+                onSubmit={(name, phone, email) =>
+                  handleContactSubmit(name, phone, email, {
+                    conversationSummary: messages
+                      .filter((m) => m?.text && typeof m.text === 'string')
+                      .slice(-12)
+                      .map((m) => `${m.sender === 'user' ? 'User' : 'Bot'}: ${m.text}`),
+                    unansweredQuestion,
+                  })
+                }
+              />
               ) : null}
             </div>
           </div>

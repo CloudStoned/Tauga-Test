@@ -42,9 +42,14 @@ async function callContactWebhook(
   phone,
   email,
   conversation,
-  unansweredQuestion
+  unansweredQuestion,
 ) {
   const url = process.env.N8N_CONTACT_WEBHOOK_URL
+  console.log('Name', name)
+  console.log('Phone', phone)
+  console.log('Email', email)
+  console.log('Conversation', conversation)
+  console.log('Unanswered Question', unansweredQuestion)
 
   try {
     const res = await axios.post(url, {
@@ -57,6 +62,7 @@ async function callContactWebhook(
 
     return res.data
   } catch (err) {
+    console.error('Error calling contact webhook:', err)
     throw err
   }
 }
