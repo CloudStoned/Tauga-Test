@@ -14,7 +14,7 @@ export function StatsCard({ label, value, icon }: StatsCardProps) {
       transition={{ duration: 0.4, ease: "easeOut" as const }}
       className="bg-card border border-border rounded-2xl p-6 flex items-start gap-4"
     >
-      <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+      <div className="w-11 h-11 rounded-xl bg-hotel-gold/10 text-hotel-gold flex items-center justify-center shrink-0">
         {icon}
       </div>
       <div>

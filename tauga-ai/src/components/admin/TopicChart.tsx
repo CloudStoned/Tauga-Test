@@ -43,7 +43,7 @@ export function TopicChart({ topics }: TopicChartProps) {
                 initial={{ width: 0 }}
                 animate={{ width: `${(count / max) * 100}%` }}
                 transition={{ duration: 0.6, delay: i * 0.05, ease: "easeOut" as const }}
-                className="h-full bg-hotel-gold rounded-full"
+                className="h-full bg-hotel-gold rounded-full brightness-120"
               />
             </div>
           </div>

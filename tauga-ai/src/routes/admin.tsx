@@ -132,7 +132,7 @@ export default function AdminPage() {
               </div>
               <button
                 onClick={() => fetchStats()}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-hotel-gold px-5 py-2.5 text-sm font-semibold text-hotel-gold-foreground transition-all duration-200 hover:brightness-110 hover:shadow-lg hover:shadow-hotel-gold/25"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-hotel-gold brightness-120 px-5 py-2.5 text-sm font-semibold text-hotel-gold-foreground transition-all duration-200 hover:brightness-130 hover:shadow-lg hover:shadow-hotel-gold/25"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="23 4 23 10 17 10" />
