@@ -74,7 +74,7 @@ export function Features() {
               variants={item}
               className="group relative bg-card border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
             >
-              <div className="w-12 h-12 rounded-xl bg-hotel-gold text-hotel-gold-foreground flex items-center justify-center mb-5 transition-colors group-hover:brightness-110">
+              <div className="w-12 h-12 rounded-xl bg-hotel-gold text-hotel-gold-foreground brightness-120 flex items-center justify-center mb-5 transition-colors group-hover:brightness-140">
                 {f.icon}
               </div>
               <h3 className="font-display text-lg font-semibold text-card-foreground mb-2">

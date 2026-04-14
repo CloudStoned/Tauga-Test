@@ -24,7 +24,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" as const }}
         >
-          <span className="inline-block text-primary-foreground text-2xl font-medium tracking-widest uppercase mb-6">
+          <span className="font-display inline-block text-primary-foreground text-2xl font-medium tracking-widest uppercase mb-6">
             Welcome to
           </span>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-6 leading-tight">

@@ -13,7 +13,7 @@ interface Message {
 function TypingIndicator() {
   return (
     <div className="flex justify-start mb-3">
-      <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mr-2.5 mt-1 text-xs font-bold">
+      <div className="w-8 h-8 rounded-full bg-hotel-gold/10 text-hotel-gold flex items-center justify-center shrink-0 mr-2.5 mt-1 text-xs font-bold">
         CH
       </div>
       <div className="bg-card border border-border rounded-2xl rounded-bl-md px-4 py-3 flex items-center gap-1.5">
