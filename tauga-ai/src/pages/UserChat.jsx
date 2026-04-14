@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import ChatBubble from '../components/chat/ChatBubble.jsx'
 import ChatInput from '../components/chat/ChatInput.jsx'
 import ContactForm from '../components/chat/ContactForm.jsx'
+import Navbar from '../components/shared/Navbar.jsx'
 import { sendMessage } from '../services/api.js'
 
 function ensureTextReply(data) {
@@ -212,72 +213,32 @@ export default function UserChat() {
           flexDirection: 'column',
         }}
       >
-        <header
-          style={{
-            background: '#fff',
-            borderBottom: '1px solid #eee',
-            padding: '0 24px',
-            height: 52,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            color: '#000000e6',
-          }}
-        >
+        <div style={{ position: 'sticky', top: 0, zIndex: 50 }}>
+          <Navbar mode="user" showBack={false} />
+
           <button
             type="button"
             onClick={() => navigate(-1)}
             style={{
+              position: 'absolute',
+              top: 8,
+              left: 10,
               background: 'transparent',
               border: 0,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 10,
-              color: '#004370',
-              cursor: 'pointer',
-              fontWeight: 800,
-              padding: '8px 10px',
-              borderRadius: 10,
-            }}
-            aria-label="Back"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              width="18"
-              height="18"
-              aria-hidden="true"
-              style={{ display: 'block' }}
-            >
-              <path
-                d="M15 18l-6-6 6-6"
-                fill="none"
-                stroke="#004370"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-
-          <div style={{ fontWeight: 600 }}>Cincinnati Hotel</div>
-
-          <div
-            style={{
+              width: 40,
+              height: 40,
+              borderRadius: 12,
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '6px 12px',
-              borderRadius: 999,
-              background: '#f7fafc',
-              border: '1px solid #eee',
               color: '#004370',
-              fontWeight: 800,
-              fontSize: 12,
+              cursor: 'pointer',
             }}
+            aria-label="Back"
           >
-            Guest
-          </div>
-        </header>
+            ←
+          </button>
+        </div>
 
         <div
           style={{

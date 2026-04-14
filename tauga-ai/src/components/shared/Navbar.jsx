@@ -19,7 +19,7 @@ export default function Navbar({ mode, showBack }) {
         color: '#000000e6',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 120 }}>
         {showBack ? (
           <div
             aria-hidden="true"
@@ -32,10 +32,12 @@ export default function Navbar({ mode, showBack }) {
           >
             ←
           </div>
-        ) : null}
-
-        <div style={{ fontWeight: 600 }}>Cincinnati Hotel</div>
+        ) : (
+          <div aria-hidden="true" style={{ width: 18, height: 18 }} />
+        )}
       </div>
+
+      <div style={{ fontWeight: 600, textAlign: 'center', flex: 1 }}>Cincinnati Hotel</div>
 
       <div>
         {isAdmin ? (
