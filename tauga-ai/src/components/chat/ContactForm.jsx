@@ -28,7 +28,7 @@ export default function ContactForm({ onSubmit }) {
       }}
     >
       <div style={{ color: '#000000e6', fontWeight: 600, marginBottom: 14 }}>
-        I’m sorry, I don’t have that information right now. Leave your details and we'll get back to you
+        I’m sorry, I don’t have that information right now. Please leave your details and we'll get back to you.
       </div>
 
       {success ? (
