@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ChatBubble } from "@/components/chat/ChatBubble";
 import { ChatInput } from "@/components/chat/ChatInput";
 import { ContactForm } from "@/components/chat/ContactForm";
+import { sendMessage, submitContact } from "@/services/api";
 
 interface Message {
   sender: "user" | "bot";
@@ -73,12 +74,8 @@ function UserChat() {
     setMessages((prev) => [...prev, { sender: "user", text: message }]);
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId, message }),
-      });
-      const data = await res.json();
+      const data = await sendMessage(sessionId, message) as any;
+      console.log("sendMessage response:", data);
 
       if (data.output?.offer_contact_form) {
         setShowContact(true);
@@ -98,17 +95,7 @@ function UserChat() {
   }
 
   async function handleContactSubmit(name: string, phone: string, email: string) {
-    await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/contact`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        phone,
-        email,
-        conversation: messages,
-        unansweredQuestion,
-      }),
-    });
+    await submitContact(name, phone, email, messages, unansweredQuestion);
 
     setShowContact(false);
     setMessages((prev) => [

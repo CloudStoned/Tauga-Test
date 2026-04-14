@@ -5,6 +5,7 @@ import { PdfUploader } from "@/components/admin/PdfUploader";
 import { StatsCard } from "@/components/admin/StatsCard";
 import { TopicChart } from "@/components/admin/TopicChart";
 import { AdminLoader } from "@/components/admin/AdminLoader";
+import { getStats, uploadPdf } from "@/services/api";
 
 export const Route = createFileRoute("/admin")({
   component: AdminDashboard,
@@ -25,11 +26,7 @@ function AdminDashboard() {
   async function fetchStats() {
     setLoading(true);
     try {
-      const res = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/api/stats`,
-        { method: "GET", headers: { "Content-Type": "application/json" } }
-      );
-      const data = await res.json();
+      const data = await getStats() as any;
       setTotalSessions(data?.totalSessions ?? 0);
       setTopics(data?.topics ?? {});
       setActiveFilename(data?.activeFilename ?? "");
@@ -114,22 +111,12 @@ function AdminDashboard() {
               />
             </div>
 
-            {/* Upload + Chart */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <PdfUploader
                 onUpload={async (file) => {
-                  const formData = new FormData();
-                  formData.append("pdf", file);
-                  const res = await fetch(
-                    `${import.meta.env.VITE_API_BASE_URL}/api/upload-pdf`,
-                    { method: "POST", body: formData }
-                  );
-                  const data = await res.json();
-                  if (res.ok) {
-                    fetchStats();
-                    return data?.message ?? "PDF uploaded successfully.";
-                  }
-                  throw new Error(data?.message ?? "Upload failed");
+                  const data = await uploadPdf(file) as any;
+                  await fetchStats();
+                  return data?.message ?? "PDF uploaded successfully.";
                 }}
               />
               <TopicChart topics={topics} />
