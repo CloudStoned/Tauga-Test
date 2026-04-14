@@ -4,7 +4,8 @@
       "Bash(npm install:*)",
       "Bash(npm init:*)",
       "Bash(node:*)",
-      "Bash(del /Q \"backend\\\\src\\\\services\\\\pdfService.js\")"
+      "Bash(del /Q \"backend\\\\src\\\\services\\\\pdfService.js\")",
+      "Bash(npm run:*)"
     ]
   }
 }

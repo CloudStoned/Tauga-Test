@@ -19,9 +19,12 @@ export default function ChatInput({ onSend, disabled }) {
       style={{
         display: 'flex',
         width: '100%',
-        alignItems: 'stretch',
-        background: 'var(--card)',
-        borderTop: '1px solid var(--border)',
+        alignItems: 'center',
+        background: 'rgba(255,255,255,0.75)',
+        borderTop: '1px solid rgba(0,0,0,0.06)',
+        padding: '7px 10px',
+        borderRadius: 20,
+        boxShadow: '0 14px 40px rgba(0,0,0,0.06)'
       }}
     >
       <input
@@ -36,41 +39,25 @@ export default function ChatInput({ onSend, disabled }) {
           }
         }}
         style={{
+          height: 40,
+          lineHeight: '40px',
+          width: '100%',
+          maxWidth: '100%',
           flexGrow: 1,
           border: 'none',
           outline: 'none',
           boxShadow: 'none',
           caretColor: 'var(--accent-2)',
-          padding: '14px 16px',
-          fontSize: 12,
+          padding: '0 16px',
+          fontSize: 13,
           fontFamily: 'sans-serif',
           color: 'var(--text)',
           background: 'transparent',
-          borderRadius: 14,
+          borderRadius: 16,
           transition: 'box-shadow .15s ease',
         }}
       />
-      <button
-        type="button"
-        disabled={disabled}
-        onClick={submit}
-        style={{
-          background: 'linear-gradient(135deg, rgba(47, 91, 255, 0.95) 0%, rgba(0, 183, 168, 0.95) 100%)',
-          color: 'white',
-          border: '1px solid rgba(47, 91, 255, 0.3)',
-          padding: '0 18px',
-          fontSize: 12,
-          fontFamily: 'sans-serif',
-          fontWeight: 700,
-          cursor: disabled ? 'not-allowed' : 'pointer',
-          borderRadius: 0,
-          transition: 'transform .15s ease, box-shadow .15s ease, opacity .15s ease',
-          opacity: disabled ? 0.65 : 1,
-          boxShadow: '0 10px 24px rgba(47, 91, 255, 0.18)',
-        }}
-      >
-        Send
-      </button>
+
     </div>
   )
 }
