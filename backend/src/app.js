@@ -25,6 +25,10 @@ function createApp() {
   app.use(notFoundHandler)
   app.use(errorHandler)
 
+  app.get('/', (req, res) => {
+    res.send('Tauga AI Backend is running!')
+  })
+
   return app
 }
 
